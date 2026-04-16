@@ -1,0 +1,2417 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index,follow">
+    <meta name="description" content="Aprenda a vender mais no delivery com o Método Pizza Pro. Sistema validado em +40 pizzarias.">
+
+    <meta name="theme-color" content="#8b5cf6">
+    <meta name="color-scheme" content="dark">
+    <meta property="og:title" content="Método Pizza Pro - Venda Mais no Delivery">
+    <meta property="og:description" content="Sistema validado em +40 pizzarias para vender mais no delivery com cardápio, precificação e promoções sem queimar margem.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <title>Método Pizza Pro - Venda Mais no Delivery</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========================================
+           VARIÁVEIS E RESET
+        ======================================== */
+        :root {
+            --primary: #8b5cf6;
+            --primary-dark: #6d28d9;
+            --secondary: #10b981;
+            --danger: #ef4444;
+            --dark: #0f0f0f;
+            --dark-lighter: #1a1a2e;
+            --text: #e5e5e5;
+            --text-muted: #999;
+            --highlight: #fbbf24;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* ========================================
+           HERO SECTION
+        ======================================== */
+        .hero {
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .highlight {
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlight-red {
+            color: var(--danger);
+        }
+
+        .highlight-yellow {
+            color: var(--highlight);
+        }
+
+        .subheadline {
+            font-size: clamp(16px, 2.5vw, 22px);
+            margin: 20px auto 40px;
+            max-width: 900px;
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        .subheadline strong {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        /* PROOF MOCKUPS */
+        .proof-mockups {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 60px 0 40px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .mockup {
+            background: rgba(139, 92, 246, 0.08);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .mockup:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .mockup p {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .mockup.hero-image {
+            grid-column: span 2;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .mockup.hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 14px;
+        }
+
+        .badge {
+            background: var(--secondary);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-left: 5px;
+        }
+
+        /* ========================================
+           CTA BUTTONS
+        ======================================== */
+        .cta-button {
+            display: inline-block;
+            padding: 20px 40px;
+            font-size: clamp(16px, 2vw, 20px);
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+            margin: 10px;
+        }
+
+        .cta-button.primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .cta-button.primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .cta-button.giant {
+            font-size: clamp(18px, 2.5vw, 24px);
+            padding: 25px 50px;
+        }
+
+        .cta-button.pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* ========================================
+           SECTIONS
+        ======================================== */
+        section {
+            padding: 80px 20px;
+        }
+
+        section h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 900;
+            color: #fff;
+        }
+
+        section > .container > h3,
+        section > .container > div > h3 {
+            font-size: clamp(24px, 3vw, 36px);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        /* ========================================
+           SOCIAL PROOF - BRANDS
+        ======================================== */
+        .social-proof-brands {
+            background: var(--dark-lighter);
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 30px;
+            margin: 40px auto;
+            max-width: 900px;
+            align-items: center;
+        }
+
+        .brand-logo {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+            transition: all 0.3s;
+        }
+
+        .brand-logo:hover {
+            background: rgba(139, 92, 246, 0.1);
+            border-color: var(--primary);
+        }
+
+        .brand-logo img {
+            max-width: 80px;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .brand-logo:hover img {
+            opacity: 1;
+        }
+
+        /* VIDEO TESTIMONIALS */
+        .video-testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 60px 0 40px;
+        }
+
+        .video-card {
+            background: rgba(139, 92, 246, 0.05);
+            border: 2px solid rgba(139, 92, 246, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .video-card video {
+            width: 100%;
+            display: block;
+        }
+
+        .video-caption {
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        /* ========================================
+           WHATSAPP PROOF
+        ======================================== */
+        .social-proof-whatsapp {
+            background: var(--dark);
+        }
+
+        .whatsapp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .whatsapp-screenshot {
+            background: rgba(139, 92, 246, 0.05);
+            border: 2px solid rgba(139, 92, 246, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-screenshot:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .whatsapp-screenshot img {
+            width: 100%;
+            display: block;
+        }
+
+        .whatsapp-screenshot .caption {
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            font-style: italic;
+            color: var(--text);
+        }
+
+        /* PAIN SECTION — removido, CSS movido para o final do bloco */
+
+        .big-text {
+            font-size: 24px;
+            margin: 20px 0;
+            line-height: 1.4;
+        }
+
+        .conclusion {
+            font-size: 28px;
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(139, 92, 246, 0.1);
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+        }
+
+        /* ========================================
+           PRODUCT CONTENT
+        ======================================== */
+        .product-content {
+            background: var(--dark-lighter);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .benefit-card {
+            background: rgba(139, 92, 246, 0.05);
+            border: 2px solid rgba(139, 92, 246, 0.2);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        .benefit-card .check {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .benefit-card h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        /* COMMUNITY PREVIEW */
+        .community-preview {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin: 60px 0;
+            padding: 40px;
+            background: rgba(139, 92, 246, 0.08);
+            border: 2px solid var(--primary);
+            border-radius: 16px;
+        }
+
+        .community-preview img {
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .community-info h3 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        /* ========================================
+           OFFER SECTION
+        ======================================== */
+        .offer-section {
+            background: var(--dark);
+        }
+
+        .offer-headline {
+            text-align: center;
+            font-size: clamp(24px, 3vw, 36px);
+            max-width: 900px;
+            margin: 0 auto 60px;
+            line-height: 1.3;
+        }
+
+        .bonus-card {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 30px;
+            background: rgba(139, 92, 246, 0.05);
+            border: 2px solid var(--primary);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: all 0.3s;
+        }
+
+        .bonus-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.2);
+        }
+
+        .bonus-image {
+            position: relative;
+        }
+
+        .bonus-image img {
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        .bonus-image .badge {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            background: var(--primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .bonus-content h4 {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .bonus-content ul {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .bonus-content ul li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .bonus-content ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        .value {
+            margin: 15px 0;
+            font-size: 18px;
+        }
+
+        .strikethrough {
+            text-decoration: line-through;
+            color: var(--text-muted);
+        }
+
+        .free {
+            color: var(--secondary);
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        /* ========================================
+           PRICING SECTION
+        ======================================== */
+        .pricing-section {
+            background: var(--dark-lighter);
+            padding: 100px 20px;
+        }
+
+        .pricing-card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
+            border: 3px solid var(--primary);
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.2);
+        }
+
+        .pricing-card h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .stack-list {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .stack-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .stack-list .check {
+            color: var(--secondary);
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        .stack-list .item {
+            flex: 1;
+            font-weight: 600;
+        }
+
+        .stack-list .value {
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+
+        .total-value {
+            text-align: center;
+            margin: 40px 0 20px;
+        }
+
+        .old-price {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .old-price .strikethrough {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .discount-text {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .final-price {
+            text-align: center;
+            margin: 30px 0;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .final-price .currency {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--secondary);
+            margin-top: 10px;
+        }
+
+        .final-price .amount {
+            font-size: clamp(64px, 10vw, 96px);
+            font-weight: 900;
+            color: var(--secondary);
+            line-height: 1;
+        }
+
+        .payment-options {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .urgency-text {
+            text-align: center;
+            background: rgba(239, 68, 68, 0.1);
+            border: 2px solid var(--danger);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 16px;
+        }
+
+        .urgency-text strong {
+            color: var(--danger);
+        }
+
+        #countdown {
+            font-family: 'Courier New', monospace;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--danger);
+        }
+
+        /* ========================================
+           GUARANTEE SECTION
+        ======================================== */
+        .guarantee-section {
+            background: var(--dark);
+            text-align: center;
+        }
+
+        .guarantee-badge {
+            margin-bottom: 30px;
+        }
+
+        .guarantee-badge img {
+            max-width: 200px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .guarantee-text {
+            font-size: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        .guarantee-details {
+            font-size: 18px;
+            margin: 20px auto;
+            max-width: 800px;
+            color: var(--text-muted);
+        }
+
+        .guarantee-promise {
+            font-size: 22px;
+            margin: 30px auto;
+            max-width: 800px;
+            padding: 30px;
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid var(--secondary);
+            border-radius: 8px;
+        }
+
+        /* ========================================
+           ABOUT SECTION
+        ======================================== */
+        .about-section {
+            background: var(--dark-lighter);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            align-items: start;
+            margin-top: 40px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .about-text {
+            font-size: 18px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .about-text .intro {
+            font-size: 22px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .highlight-box {
+            background: rgba(139, 92, 246, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 20px;
+        }
+
+        .mission-list,
+        .differentiation-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .mission-list li,
+        .differentiation-list li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .mission-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .differentiation-list li::before {
+            content: '✅';
+            position: absolute;
+            left: 0;
+        }
+
+        .about-text .conclusion {
+            font-size: 20px;
+            background: rgba(139, 92, 246, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        /* ========================================
+           FAQ SECTION
+        ======================================== */
+        .faq-section {
+            background: var(--dark);
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .faq-item {
+            background: rgba(139, 92, 246, 0.05);
+            border: 2px solid rgba(139, 92, 246, 0.2);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .faq-item h4 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .faq-item p {
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           FINAL CTA
+        ======================================== */
+        .final-cta {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f0f 100%);
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .final-message {
+            font-size: 22px;
+            margin: 30px 0;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 60px auto;
+            max-width: 900px;
+        }
+
+        .option {
+            padding: 40px;
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .option.bad {
+            background: rgba(239, 68, 68, 0.08);
+            border: 2px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .option.good {
+            background: rgba(16, 185, 129, 0.08);
+            border: 2px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .option:hover {
+            transform: translateY(-5px);
+        }
+
+        .option h4 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .option.bad h4 {
+            color: var(--danger);
+        }
+
+        .option.good h4 {
+            color: var(--secondary);
+        }
+
+        .decision {
+            font-size: 24px;
+            margin: 40px 0;
+        }
+
+        .guarantee-reminder {
+            margin-top: 30px;
+            font-size: 18px;
+            color: var(--secondary);
+        }
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+        footer {
+            background: var(--dark);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            margin: 10px 0;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ========================================
+           RESPONSIVE
+        ======================================== */
+        @media (max-width: 1024px) {
+            .bonus-card {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .community-preview {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            .mockup.hero-image {
+                grid-column: span 1;
+            }
+
+            .pricing-card {
+                padding: 30px 20px;
+            }
+
+            .final-price .amount {
+                font-size: 64px;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========================================
+           UTILITIES
+        ======================================== */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-1 { margin-top: 10px; }
+        .mt-2 { margin-top: 20px; }
+        .mt-3 { margin-top: 30px; }
+        .mt-4 { margin-top: 40px; }
+
+        .mb-1 { margin-bottom: 10px; }
+        .mb-2 { margin-bottom: 20px; }
+        .mb-3 { margin-bottom: 30px; }
+        .mb-4 { margin-bottom: 40px; }
+
+
+        /* ========================================
+           ACESSIBILIDADE & PERFORMANCE
+        ======================================== */
+        .skip-link{
+            position:absolute;
+            left:-999px;
+            top:10px;
+            background:#fff;
+            color:#000;
+            padding:10px 14px;
+            border-radius:10px;
+            z-index:9999;
+            font-weight:700;
+            text-decoration:none;
+        }
+        .skip-link:focus{ left:10px; }
+
+        /* Reduz animações para quem prefere menos movimento */
+        @media (prefers-reduced-motion: reduce) {
+            * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+        }
+
+        /* Evita efeitos pesados em dispositivos fracos */
+        .mockup{ backdrop-filter: none; }
+        @supports ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+            .mockup{ backdrop-filter: blur(8px); }
+        }
+
+    
+        /* ========================================
+           IMAGE SUPPORT (performance + layout)
+        ======================================== */
+        .mockup-image{
+            width:100%;
+            display:block;
+            border-radius:12px;
+            object-fit:cover;
+        }
+        .mockup-image.small{
+            height:120px;
+            border-radius:8px;
+        }
+        .mockup-image.hero{
+            height:300px;
+            border-radius:14px;
+            object-fit:cover;
+        }
+        .brand-img{
+            width:100%;
+            max-height:70px;
+            object-fit:contain;
+            display:block;
+            filter: none;
+        }
+        .community-image{
+            width:100%;
+            height:auto;
+            border-radius:12px;
+            display:block;
+        }
+        .bonus-img{
+            width:100%;
+            height:250px;
+            object-fit:cover;
+            border-radius:12px;
+            display:block;
+        }
+
+
+        /* ====== ASSETS / PLACEHOLDERS (imagens/vídeos) ====== */
+        .mockup-caption{
+            margin: 10px 0 0;
+            font-size: 14px;
+            color: rgba(255,255,255,0.78);
+            text-align: center;
+        }
+        .photo-placeholder{
+            width: 100%;
+            min-height: 240px;
+            border-radius: 16px;
+            border: 2px dashed rgba(255,255,255,0.35);
+            background: rgba(255,255,255,0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 18px;
+            gap: 8px;
+        }
+        .photo-placeholder.placeholder-small{
+            min-height: 220px;
+            border-radius: 14px;
+        }
+        .photo-placeholder .ph-emoji{font-size: 34px; line-height: 1;}
+        .photo-placeholder .ph-title{font-weight: 800; letter-spacing: .2px;}
+        .photo-placeholder .ph-sub{opacity: .85; font-size: 13px; line-height: 1.25;}
+        .photo-placeholder code{font-size: 12px; opacity: .9;}
+
+        .whatsapp-screenshot img{
+            width: 100%;
+            border-radius: 16px;
+            display:block;
+        }
+
+        .video-testimonials{margin-top: 40px;}
+        .subheadline{
+            margin: 0 0 16px;
+            font-size: 20px;
+            text-align: center;
+            opacity: .92;
+        }
+        .video-grid{
+            display:grid;
+            grid-template-columns: repeat(3, minmax(0,1fr));
+            gap: 16px;
+        }
+        .video-card{
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.06);
+            padding: 16px;
+            text-align: left;
+        }
+        .video-placeholder{
+            height: 140px;
+            border-radius: 14px;
+            background: rgba(0,0,0,0.35);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size: 44px;
+            margin-bottom: 12px;
+        }
+        .video-meta strong{display:block; font-size: 16px;}
+        .video-meta span{display:block; font-size: 13px; opacity:.85; margin-top:4px;}
+        .video-hint{margin-top:10px; font-size:12px; opacity:.8;}
+        .small-note{text-align:center; font-size:13px; opacity:.8; margin-top:12px;}
+
+        @media (max-width: 900px){
+            .video-grid{grid-template-columns:1fr; }
+            .mockup-caption{font-size: 13px;}
+        }
+
+    
+    /* CENTRALIZAÇÃO GERAL */
+    body { display: flex; flex-direction: column; align-items: center; }
+    body > * { width: 100%; }
+    section, header, footer, main, div.scarcity-bar { max-width: 100%; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; text-align: center; }
+    /* Mantém leitura boa em blocos de conteúdo interno */
+    .pain-card, .benefit-card, .bonus-card, .faq-item, .stack-list, .about-grid, .offer-summary,
+    .bullets-list, .bullets-list li, .about-text, .bonus-content { text-align: left; }
+
+    /* ========================================
+       BARRA DE ESCASSEZ (TOPO)
+    ======================================== */
+    .scarcity-bar {
+        background: var(--danger);
+        color: #fff;
+        text-align: center;
+        padding: 12px 20px;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    /* ========================================
+       HERO — ANIMAÇÕES FADE-IN STAGGER
+    ======================================== */
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(22px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-content > * {
+        opacity: 0;
+        animation: fadeInUp 0.55s ease-out forwards;
+    }
+    .hero-content > *:nth-child(1) { animation-delay: 0.10s; }
+    .hero-content > *:nth-child(2) { animation-delay: 0.25s; }
+    .hero-content > *:nth-child(3) { animation-delay: 0.40s; }
+    .hero-content > *:nth-child(4) { animation-delay: 0.55s; }
+    .hero-content > *:nth-child(5) { animation-delay: 0.70s; }
+    .hero-content > *:nth-child(6) { animation-delay: 0.85s; }
+
+    /* ========================================
+       HERO BADGE & SOCIAL PROOF
+    ======================================== */
+    .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: rgba(255, 255, 255, 0.80);
+        padding: 7px 20px;
+        border-radius: 100px;
+        font-size: 13px;
+        font-weight: 500;
+        margin-bottom: 28px;
+        letter-spacing: 0.3px;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+
+    .hero h1 .highlight {
+        background: linear-gradient(90deg, var(--primary) 0%, #c084fc 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .hero-social-proof {
+        margin-top: 24px;
+        font-size: 15px;
+        color: var(--text-muted);
+    }
+
+    /* HERO STATS ROW */
+    .hero-stats {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+        margin-top: 48px;
+        flex-wrap: wrap;
+    }
+
+    .hero-stat {
+        text-align: center;
+    }
+
+    .hero-stat-value {
+        font-size: 28px;
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.1;
+        letter-spacing: -0.5px;
+    }
+
+    .hero-stat-label {
+        font-size: 13px;
+        color: rgba(255,255,255,0.50);
+        margin-top: 4px;
+    }
+
+    .hero-stat-divider {
+        width: 1px;
+        height: 36px;
+        background: rgba(255,255,255,0.15);
+        flex-shrink: 0;
+    }
+
+    @media (max-width: 480px) {
+        .hero-stat-divider { display: none; }
+        .hero-stats { gap: 24px; }
+    }
+
+    .authority-strip p {
+        font-size: 17px;
+        color: var(--text-muted);
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    .authority-strip strong {
+        color: #fff;
+    }
+
+    /* ========================================
+       RESULTS GALLERY (Bloco 4)
+    ======================================== */
+    .results-section {
+        background: var(--dark-lighter);
+    }
+
+    .result-main-card {
+        max-width: 720px;
+        margin: 40px auto 0;
+        background: rgba(16,185,129,0.06);
+        border: 2px solid var(--secondary);
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .result-main-card::before {
+        content: "RESULTADO REAL";
+        position: absolute;
+        top: 20px;
+        left: -40px;
+        background: #10b981;
+        color: #fff;
+        padding: 6px 50px;
+        transform: rotate(-25deg);
+        font-size: 12px;
+        font-weight: 700;
+        z-index: 3;
+    }
+
+    .result-overlay-badge {
+        position: absolute;
+        left: 20px;
+        bottom: 20px;
+        background: rgba(0, 0, 0, 0.82);
+        border: 1px solid rgba(255,255,255,0.14);
+        border-radius: 12px;
+        padding: 12px 16px;
+        z-index: 2;
+    }
+
+    .result-overlay-badge strong {
+        display: block;
+        color: #10b981;
+        font-size: 18px;
+        font-weight: 800;
+    }
+
+    .result-overlay-badge span {
+        display: block;
+        margin-top: 4px;
+        font-size: 13px;
+        color: rgba(255,255,255,0.78);
+    }
+
+    .result-main-card .result-img {
+        width: 100%;
+        display: block;
+        max-height: 480px;
+        object-fit: cover;
+    }
+
+    .result-img-placeholder {
+        width: 100%;
+        min-height: 320px;
+        background: rgba(16,185,129,0.08);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-size: 48px;
+        padding: 40px;
+        border-bottom: 2px solid rgba(16,185,129,0.2);
+    }
+
+    .result-img-placeholder span {
+        font-size: 15px;
+        color: var(--text-muted);
+        font-weight: 600;
+    }
+
+    .result-card-body {
+        padding: 30px;
+        text-align: left;
+    }
+
+    .result-card-body .result-tag {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--secondary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+    }
+
+    .result-card-body h3 {
+        color: #fff;
+        font-size: clamp(22px, 3vw, 30px);
+        margin-bottom: 6px;
+    }
+
+    .result-card-body .result-sub {
+        color: var(--highlight);
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 16px;
+    }
+
+    .result-card-body blockquote {
+        border-left: 3px solid var(--primary);
+        padding-left: 16px;
+        font-size: 16px;
+        color: var(--text);
+        margin: 0 0 12px;
+        font-style: italic;
+    }
+
+    .result-card-body .result-author {
+        font-size: 14px;
+        color: var(--text-muted);
+        font-weight: 600;
+    }
+
+    /* ========================================
+       BULLETS SECTION (Bloco 5)
+    ======================================== */
+    .bullets-list {
+        list-style: none;
+        max-width: 860px;
+        margin: 40px auto 0;
+        text-align: left;
+    }
+
+    .bullets-list li {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+        font-size: 17px;
+        line-height: 1.55;
+    }
+
+    .bullets-list li:last-child {
+        border-bottom: none;
+    }
+
+    .bullets-list .bullet-check {
+        color: var(--secondary);
+        font-size: 22px;
+        flex-shrink: 0;
+        margin-top: 1px;
+    }
+
+    .bullets-note {
+        max-width: 860px;
+        margin: 24px auto 0;
+        text-align: center;
+        font-size: 15px;
+        color: var(--text-muted);
+        font-style: italic;
+    }
+
+    /* ========================================
+       EXIT POPUP
+    ======================================== */
+    #exit-popup {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.82);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    #exit-popup.active {
+        display: flex;
+    }
+
+    .exit-popup-box {
+        background: var(--dark-lighter);
+        border: 2px solid var(--primary);
+        border-radius: 20px;
+        padding: 48px 40px;
+        max-width: 540px;
+        width: 100%;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+
+    .exit-popup-box h2 {
+        font-size: clamp(22px, 3vw, 30px);
+        color: #fff;
+        margin-bottom: 20px;
+        line-height: 1.3;
+    }
+
+    .exit-popup-box p {
+        font-size: 17px;
+        color: var(--text);
+        margin-bottom: 12px;
+        line-height: 1.55;
+    }
+
+    .exit-popup-box .urgency-note {
+        font-size: 14px;
+        color: var(--danger);
+        font-weight: 700;
+        margin-bottom: 28px;
+    }
+
+    .exit-popup-box .dismiss-link {
+        display: block;
+        margin-top: 20px;
+        font-size: 13px;
+        color: var(--text-muted);
+        text-decoration: underline;
+        cursor: pointer;
+        background: none;
+        border: none;
+        width: 100%;
+    }
+
+    .exit-popup-box .dismiss-link:hover {
+        color: var(--text);
+    }
+
+    /* ================================================
+       BLOCO 7 — BÔNUS (features-2 style)
+    ================================================ */
+    .bonus2-section {
+        background: var(--dark-lighter);
+    }
+    .bonus2-header {
+        text-align: center;
+        margin-bottom: 56px;
+    }
+    .bonus2-header h2 {
+        font-size: clamp(24px, 4vw, 38px);
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 12px;
+    }
+    .bonus2-header p {
+        font-size: 16px;
+        color: var(--text-muted);
+    }
+    .bonus2-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        max-width: 960px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    @media (max-width: 760px) { .bonus2-grid { grid-template-columns: 1fr; max-width: 400px; } }
+
+    .bonus2-card {
+        background: rgba(255,255,255,0.04);
+        border-radius: 16px;
+        padding: 32px 24px 28px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* CardDecorator */
+    .bonus2-decorator {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 8px;
+        -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 70%, transparent 100%);
+        mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 70%, transparent 100%);
+    }
+    .bonus2-decorator-grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(to right, rgba(255,255,255,0.18) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255,255,255,0.18) 1px, transparent 1px);
+        background-size: 24px 24px;
+    }
+    .bonus2-decorator-icon {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #0d0d1a;
+        border: 1px solid rgba(139,92,246,0.45);
+        border-radius: 10px;
+        color: var(--primary);
+    }
+
+    .bonus2-badge {
+        display: inline-block;
+        background: rgba(139,92,246,0.18);
+        border: 1px solid rgba(139,92,246,0.35);
+        color: #c4b5fd;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        padding: 3px 12px;
+        border-radius: 100px;
+        margin-bottom: 12px;
+    }
+    .bonus2-card h3 {
+        color: #fff !important;
+        font-size: 15px !important;
+        font-weight: 600;
+        margin-bottom: 10px;
+        line-height: 1.4;
+        text-align: center !important;
+    }
+    .bonus2-card p {
+        font-size: 13px !important;
+        color: var(--text-muted) !important;
+        line-height: 1.6;
+        margin-bottom: 16px;
+        text-align: center !important;
+    }
+    .bonus2-value {
+        font-size: 12px;
+        color: var(--text-muted);
+        text-decoration: line-through;
+        margin-bottom: 4px;
+    }
+    .bonus2-free {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--secondary);
+    }
+    .bonus2-cta {
+        text-align: center;
+        margin-top: 48px;
+    }
+
+    /* ================================================
+       CORREÇÕES GERAIS DE OVERFLOW MOBILE
+    ================================================ */
+    img { max-width: 100%; height: auto; }
+
+    .bio-stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin: 30px 0;
+        text-align: center;
+    }
+    @media (max-width: 480px) {
+        .bio-stats-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+        .hero-stats { flex-direction: column; gap: 16px; }
+        .hero-stat-divider { display: none; }
+        .bonus-card { grid-template-columns: 1fr !important; }
+        .about-content { grid-template-columns: 1fr !important; }
+        .community-preview { grid-template-columns: 1fr !important; }
+        section { padding: 60px 16px; }
+        .container { padding: 0 16px; }
+    }
+
+    /* ================================================
+       BLOCO 3 — DORES (CSS DEFINITIVO)
+    ================================================ */
+    section.dores-section {
+        background: #1a1a2e !important;
+        padding: 80px 20px;
+    }
+    .dores-header {
+        text-align: center;
+        margin-bottom: 48px;
+    }
+    .dores-pill {
+        display: inline-block;
+        background: rgba(139,92,246,0.18);
+        border: 1px solid rgba(139,92,246,0.45);
+        color: #c4b5fd;
+        padding: 5px 18px;
+        border-radius: 100px;
+        font-size: 13px;
+        font-weight: 500;
+        margin-bottom: 18px;
+    }
+    .dores-header h2 {
+        font-size: clamp(26px, 4vw, 40px);
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 12px;
+    }
+    .dores-header p {
+        font-size: 16px;
+        color: #999;
+        max-width: 580px;
+        margin: 0 auto;
+    }
+    .dores-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        max-width: 960px;
+        margin: 0 auto;
+    }
+    @media (max-width: 760px) { .dores-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 460px) { .dores-grid { grid-template-columns: 1fr; } }
+
+    .dores-card-wrap {
+        border-radius: 13px;
+        padding: 1px;
+        background: rgba(255,255,255,0.06);
+        transition: transform 0.25s;
+    }
+    .dores-card-wrap:hover { transform: translateY(-3px); }
+    .dores-card-wrap.destaque {
+        background: linear-gradient(135deg, #A46BFF, #33507C);
+    }
+    .dores-card {
+        background: #0d0d1a;
+        border-radius: 12px;
+        padding: 24px;
+        height: 100%;
+        box-sizing: border-box;
+    }
+    .dores-card-icon {
+        color: #a78bfa;
+        display: block;
+        margin-bottom: 14px;
+    }
+    .dores-card h3 {
+        color: #fff;
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        line-height: 1.4;
+    }
+    .dores-card p {
+        font-size: 13px;
+        color: #999;
+        line-height: 1.6;
+        margin: 0;
+    }
+    .dores-cta {
+        text-align: center;
+        margin-top: 48px;
+    }
+</style>
+
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '935969425808577');
+      fbq('track', 'PageView');
+      fbq('track', 'ViewContent', {
+        content_name: 'Método Pizza Pro',
+        value: 37.00,
+        currency: 'BRL'
+      });
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=935969425808577&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "wcgthjyg6y");
+    </script>
+    <!-- End Microsoft Clarity -->
+
+</head>
+<body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <!-- BARRA DE ESCASSEZ -->
+    <div class="scarcity-bar" role="alert">
+        🔥 Oferta especial expira hoje &mdash; garanta seu acesso por R$37
+    </div>
+
+    <main id="conteudo">
+
+    <!-- ========================================
+         BLOCO 1 — HERO
+    ======================================== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+
+                <div class="hero-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.8H20l-4.9 3.6 1.9 5.8L12 15l-5 3.4 1.9-5.8L4 9l6.1-.2z"/></svg>
+                    Específico para donos de pizzaria
+                </div>
+
+                <h1>
+                    O que eu fiz pra destravar as vendas<br>
+                    <span class="highlight">no iFood em 30 dias</span>
+                </h1>
+
+                <p class="subheadline">
+                    O problema não era a plataforma. Era cardápio sem conversão, foto que não vendia e campanha drenando margem. Corrigi os três em 30 dias.
+                </p>
+
+                <img
+                    src="https://raw.githubusercontent.com/schuindtx/metodo-pizza-pro/main/antes-depois.png"
+                    alt="Antes: R$954 faturados. Depois: R$11.620 em 30 dias aplicando o Método Pizza Pro"
+                    loading="lazy"
+                    style="max-width:480px; width:100%; border-radius:16px; margin:8px auto 16px; display:block; box-shadow:0 10px 40px rgba(0,0,0,0.4);"
+                >
+
+                <p class="hero-social-proof">
+                    ⭐⭐⭐⭐⭐ &ldquo;Saí de poucos pedidos para bater recorde aplicando o método&rdquo; &mdash; Top Pizza Maracanã
+                </p>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         BLOCO 3 — DORES
+    ======================================== -->
+    <section class="dores-section">
+        <div class="container">
+
+            <div class="dores-header">
+                <span class="dores-pill">Você se identifica?</span>
+                <h2>Você sente que sua pizzaria <span class="highlight-red">podia vender muito mais?</span></h2>
+                <p>Se você se identifica com pelo menos 2 dessas situações, o Método foi feito pra você:</p>
+            </div>
+
+            <div class="dores-grid">
+
+                <div class="dores-card-wrap">
+                    <div class="dores-card">
+                        <span class="dores-card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg></span>
+                        <h3>Poucos pedidos no iFood</h3>
+                        <p>A loja está aberta mas os pedidos não chegam. Você fica olhando o celular esperando notificação que não vem.</p>
+                    </div>
+                </div>
+
+                <div class="dores-card-wrap destaque">
+                    <div class="dores-card">
+                        <span class="dores-card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span>
+                        <h3>Não sabe montar combos que vendem</h3>
+                        <p>Tem produto bom mas o cardápio não convence. O cliente entra, olha e sai sem comprar.</p>
+                    </div>
+                </div>
+
+                <div class="dores-card-wrap">
+                    <div class="dores-card">
+                        <span class="dores-card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+                        <h3>Dando desconto e perdendo margem</h3>
+                        <p>A plataforma empurra promoção atrás de promoção e você aceita porque tem medo de sumir do ranking.</p>
+                    </div>
+                </div>
+
+                <div class="dores-card-wrap">
+                    <div class="dores-card">
+                        <span class="dores-card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+                        <h3>Não sabe onde está o problema</h3>
+                        <p>Já tentou várias coisas mas nada resolve de vez. Não sabe se é o cardápio, o preço, a foto ou outra coisa.</p>
+                    </div>
+                </div>
+
+                <div class="dores-card-wrap destaque">
+                    <div class="dores-card">
+                        <span class="dores-card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span>
+                        <h3>Concorrência te ultrapassando</h3>
+                        <p>Abriram pizzaria nova na região ou o concorrente de sempre está crescendo enquanto você fica estagnado.</p>
+                    </div>
+                </div>
+
+                <div class="dores-card-wrap">
+                    <div class="dores-card">
+                        <span class="dores-card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></span>
+                        <h3>Cliente compra uma vez e some</h3>
+                        <p>Não tem sistema de recompra. Cada semana precisa conquistar cliente novo do zero.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="dores-cta">
+                <a href="https://pay.hotmart.com/W104314494Q" target="_blank" rel="noopener noreferrer" class="cta-button primary">
+                    🎯 QUERO RESOLVER ISSO AGORA
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================
+         BLOCO 4 — GALERIA DE RESULTADOS
+    ======================================== -->
+    <section class="results-section">
+        <div class="container">
+            <h2>Esses resultados não são promessa. <span class="highlight">São da minha própria operação.</span></h2>
+            <p class="subtitle">📊 Esses números são reais. E você consegue validar no seu próprio painel.</p>
+
+            <div class="result-main-card">
+                <div style="position: relative;">
+                    <img
+                        src="https://raw.githubusercontent.com/schuindtx/metodo-pizza-pro/main/antes-depois.png"
+                        alt="Antes: R$954 faturados. Depois: R$11.620 em 30 dias aplicando o Método Pizza Pro"
+                        class="result-img"
+                        loading="lazy"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+                    >
+                    <div class="result-overlay-badge">
+                        <strong>De R$954 &rarr; R$11.620</strong>
+                        <span>em 30 dias aplicando o m&eacute;todo</span>
+                    </div>
+                </div>
+                <div class="result-img-placeholder" style="display:none;">
+                    📊<br>
+                    <span>Adicione o arquivo:<br>pizza-pro-assets/img.jpg</span>
+                </div>
+                <div class="result-card-body">
+                    <div class="result-tag">🍕 Top Pizza &mdash; Curitiba/PR</div>
+                    <h3>149 pedidos em uma única noite</h3>
+                    <div class="result-sub">R$13.519 faturados</div>
+                    <img
+                        src="https://raw.githubusercontent.com/schuindtx/metodo-pizza-pro/main/pizza-pro-assets/img.jpg"
+                        alt="Painel do iFood mostrando 149 pedidos e R$13.519 faturados na Top Pizza"
+                        loading="lazy"
+                        style="width:100%; border-radius:10px; margin:16px 0; display:block;"
+                    >
+                    <blockquote>
+                        "Construí esse método na minha própria pizzaria. Agora estou entregando o mesmo passo a passo pra você."
+                    </blockquote>
+                    <div class="result-author">— Mateus Schuindt · Dono e operador ativo</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px;">
+                <a href="https://pay.hotmart.com/W104314494Q" target="_blank" rel="noopener noreferrer" class="cta-button primary">
+                    QUERO TER RESULTADO COMO ESSE →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         BLOCO 5 — O QUE VOCÊ VAI APRENDER
+    ======================================== -->
+    <section class="product-content">
+        <div class="container">
+            <div style="text-align:center; max-width:640px; margin:0 auto 8px;">
+                <h2>O que está dentro do Método Pizza Pro</h2>
+                <p style="margin-top:12px; font-size:17px; color:var(--text-muted);">Sem teoria. Sem achismo. O que eu apliquei na minha própria pizzaria pra sair de R$954 pra R$11.620 em 30 dias.</p>
+            </div>
+
+            <ul class="bullets-list">
+                <li>
+                    <span class="bullet-check">✅</span>
+                    <span><strong>Descobrir em minutos por que seus pedidos não chegam</strong> &mdash; visualização baixa ou cardápio que não converte. Você vai saber exatamente onde está o furo.</span>
+                </li>
+                <li>
+                    <span class="bullet-check">✅</span>
+                    <span><strong>Montar combos que fazem o cliente gastar mais sem perceber</strong> &mdash; nomenclatura, estrutura e posicionamento que aumentam ticket sem você precisar baixar preço.</span>
+                </li>
+                <li>
+                    <span class="bullet-check">✅</span>
+                    <span><strong>Fotos que param o dedo na tela</strong> &mdash; a diferença entre um cardápio invisível e um que vende está em detalhes que a maioria ignora. Você vai ver quais.</span>
+                </li>
+                <li>
+                    <span class="bullet-check">✅</span>
+                    <span><strong>Usar só as campanhas do iFood que dão retorno</strong> &mdash; e cortar as que estão drenando sua margem sem você perceber.</span>
+                </li>
+                <li>
+                    <span class="bullet-check">✅</span>
+                    <span><strong>Não sumir do ranking do iFood</strong> &mdash; cancelamento, tempo de resposta e avaliações que o algoritmo usa pra te enterrar ou te colocar na frente.</span>
+                </li>
+                <li>
+                    <span class="bullet-check">✅</span>
+                    <span><strong>Fazer o cliente voltar sem depender de desconto</strong> &mdash; sistema simples de recompra que transforma pedido único em recorrente.</span>
+                </li>
+            </ul>
+
+            <p class="bullets-note">Tudo baseado na operação real de uma pizzaria que fatura R$13.519 em uma única noite.</p>
+
+            <div style="margin-top: 40px;">
+                <a href="https://pay.hotmart.com/W104314494Q" target="_blank" rel="noopener noreferrer" class="cta-button primary">
+                    🔓 QUERO ACESSO COMPLETO AGORA
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         BLOCO 7 — BÔNUS
+    ======================================== -->
+    <section class="bonus2-section" id="oferta">
+        <div class="container">
+
+            <div class="bonus2-header">
+                <h2>Acesso Vitalício ao Método Pizza Pro<br>+ <span class="highlight">3 Bônus Exclusivos</span></h2>
+                <p>Pra você vender mais, errar menos e lotar o delivery todo dia.</p>
+            </div>
+
+            <div class="bonus2-grid">
+
+                <!-- BÔNUS 1 -->
+                <div class="bonus2-card">
+                    <span class="bonus2-badge">BÔNUS 1</span>
+                    <h3>Planilha de Diagnóstico do Funil</h3>
+                    <p>A mesma planilha que uso pra analisar cardápios — você preenche os dados do iFood e já sabe se o problema é visualização ou conversão.</p>
+                    <div class="bonus2-value">Valor real: R$47</div>
+                    <div class="bonus2-free">HOJE: 100% GRÁTIS</div>
+                </div>
+
+                <!-- BÔNUS 2 -->
+                <div class="bonus2-card">
+                    <span class="bonus2-badge">BÔNUS 2</span>
+                    <h3>Checklist do Cardápio Perfeito</h3>
+                    <p>Lista completa de nomenclatura, estrutura, fotos e campanhas. Aplica sozinho em menos de 1 hora.</p>
+                    <div class="bonus2-value">Valor real: R$27</div>
+                    <div class="bonus2-free">HOJE: 100% GRÁTIS</div>
+                </div>
+
+                <!-- BÔNUS 3 -->
+                <div class="bonus2-card">
+                    <span class="bonus2-badge">BÔNUS 3</span>
+                    <h3>Comunidade de Donos de Pizzaria</h3>
+                    <p>Grupo exclusivo pra trocar estratégias, tirar dúvidas e acompanhar atualizações do método.</p>
+                    <div class="bonus2-value">Valor real: R$57</div>
+                    <div class="bonus2-free">HOJE: 100% GRÁTIS</div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- ========================================
+         BLOCO 8 — RECAPITULAÇÃO E PREÇO
+    ======================================== -->
+    <section class="pricing-section" id="checkout">
+        <div class="container">
+            <div class="pricing-card">
+                <h3>Recapitulando tudo que você vai receber:</h3>
+
+                <ul class="stack-list">
+                    <li>
+                        <span class="check">✅</span>
+                        <span class="item">Método Pizza Pro completo</span>
+                        <span class="value strikethrough">R$97</span>
+                    </li>
+                    <li>
+                        <span class="check">✅</span>
+                        <span class="item">Bônus 1: Planilha de Diagnóstico do Funil</span>
+                        <span class="value strikethrough">R$47</span>
+                    </li>
+                    <li>
+                        <span class="check">✅</span>
+                        <span class="item">Bônus 2: Checklist do Cardápio Perfeito</span>
+                        <span class="value strikethrough">R$27</span>
+                    </li>
+                    <li>
+                        <span class="check">✅</span>
+                        <span class="item">Bônus 3: Comunidade de Donos de Pizzaria</span>
+                        <span class="value strikethrough">R$57</span>
+                    </li>
+                </ul>
+
+                <div class="total-value">
+                    <p class="old-price">Valor total: <span class="strikethrough">R$228</span></p>
+                    <p class="discount-text">Mas hoje você garante acesso completo por apenas:</p>
+                </div>
+
+                <div class="final-price">
+                    <span class="currency">R$</span>
+                    <span class="amount">37</span>
+                </div>
+
+                <p class="payment-options">ou 3x de R$12,77 no cartão</p>
+
+                <a href="https://pay.hotmart.com/W104314494Q" target="_blank" rel="noopener noreferrer" class="cta-button primary giant pulse" aria-label="Comprar agora na Hotmart">
+                    🔥 QUERO GARANTIR POR R$37 AGORA
+                </a>
+
+                <p class="urgency-text">
+                    ⚠️ <strong>Atenção:</strong> Essa oferta expira em <span id="countdown">23:59:59</span>.
+                    O cronômetro começa na sua primeira visita e não reinicia ao atualizar a página.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         BLOCO 9 — GARANTIA
+    ======================================== -->
+    <section class="guarantee-section">
+        <div class="container">
+            <div class="guarantee-badge">
+                <div style="width: 200px; height: 200px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 64px; font-weight: 900; color: white; flex-direction: column; line-height: 1.1;">
+                    30<span style="font-size: 32px;">DIAS</span>
+                </div>
+            </div>
+
+            <h2>Garantia Incondicional de <span class="highlight">30 Dias</span></h2>
+
+            <p class="guarantee-text">
+                Acredito tanto no Método Pizza Pro que você tem <strong>30 dias completos</strong> pra testar sem risco.
+            </p>
+
+            <p class="guarantee-details">
+                Se dentro desse período sentir que o método não é pra você, basta mandar uma mensagem e devolvemos <strong>100% do seu investimento</strong>.
+            </p>
+
+            <p class="guarantee-promise">
+                <strong>Sem burocracia. Sem perguntas. O risco é nosso, a decisão é sua.</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- ========================================
+         BLOCO 6 — BIO
+    ======================================== -->
+    <section class="about-section">
+        <div class="container">
+            <h2>Sobre o criador</h2>
+
+            <div class="about-content">
+                <div class="about-image">
+                    <div style="background: linear-gradient(135deg, #8b5cf6, #6d28d9); height: 400px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 96px;">
+                        📸
+                    </div>
+                </div>
+
+                <div class="about-text">
+                    <p class="intro">
+                        Sou <strong>Mateus Schuindt</strong>, dono e operador das pizzarias <strong>Top Pizza Maracanã e Top Pizza Atuba</strong> em Curitiba/PR.
+                    </p>
+
+                    <p>
+                        Não sou consultor que nunca pisou numa cozinha. Opero pizzaria todo dia &mdash; e foi dentro da minha própria operação que construí esse método.
+                    </p>
+
+                    <p>
+                        Enquanto outros ensinam teoria, eu estou na loja vendo os pedidos chegarem em tempo real.
+                    </p>
+
+                    <p class="highlight-box">
+                        <strong>149 pedidos em uma única noite. R$13.519 faturados.</strong><br>
+                        Esse é o resultado do método que agora estou entregando pra você.
+                    </p>
+
+                    <div class="bio-stats-grid">
+                        <div style="background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.3); border-radius: 12px; padding: 20px;">
+                            <div style="font-size: 28px; font-weight: 900; color: var(--secondary);">149</div>
+                            <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">pedidos em uma noite</div>
+                        </div>
+                        <div style="background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.3); border-radius: 12px; padding: 20px;">
+                            <div style="font-size: 28px; font-weight: 900; color: var(--secondary);">R$13.519</div>
+                            <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">faturados</div>
+                        </div>
+                        <div style="background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.3); border-radius: 12px; padding: 20px;">
+                            <div style="font-size: 28px; font-weight: 900; color: var(--secondary);">2</div>
+                            <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">pizzarias em Curitiba/PR</div>
+                        </div>
+                    </div>
+
+                    <a href="https://pay.hotmart.com/W104314494Q" target="_blank" rel="noopener noreferrer" class="cta-button primary">
+                        🍕 QUERO APRENDER COM QUEM OPERA DE VERDADE
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         BLOCO 10 — FAQ
+    ======================================== -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Perguntas <span class="highlight">Frequentes</span></h2>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>❓ Em quanto tempo vejo resultado?</h4>
+                    <p>Quem aplica desde a primeira semana já vê diferença nos dados do iFood. Os resultados maiores aparecem entre <strong>15 e 30 dias</strong> de aplicação consistente.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>❓ Funciona pra pizzaria pequena?</h4>
+                    <p>Funciona <strong>melhor ainda</strong>. Em cidade pequena a concorrência é menor e o impacto das correções no cardápio é imediato.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>❓ Preciso ter experiência com marketing?</h4>
+                    <p>Não. O método foi criado por um operador pra operadores. <strong>Se você sabe mexer no iFood, consegue aplicar tudo.</strong></p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>❓ Já tenho agência cuidando do meu marketing. Vale a pena?</h4>
+                    <p>Vale ainda mais. Você vai saber exatamente <strong>o que cobrar e o que questionar</strong> da sua agência &mdash; e parar de pagar por resultado que não vem.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>❓ Funciona só pra pizzaria ou pra outros deliveries também?</h4>
+                    <p>O método foi construído e testado em pizzaria. Os princípios funcionam pra qualquer delivery, mas <strong>tudo aqui é pensado especificamente pra pizzaria</strong>.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>❓ O acesso é vitalício?</h4>
+                    <p><strong>Sim.</strong> Paga uma vez, acessa pra sempre &mdash; incluindo todas as atualizações futuras.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>❓ E se eu não gostar?</h4>
+                    <p>Você tem <strong>30 dias de garantia incondicional</strong>. Manda uma mensagem e devolvemos 100% sem perguntas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         BLOCO 11 — CTA FINAL
+    ======================================== -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Uma decisão de <span class="highlight">R$37</span></h2>
+
+            <p class="final-message">Você tem duas opções agora:</p>
+
+            <div class="options">
+                <div class="option bad">
+                    <h4>❌ Sem o Método</h4>
+                    <p>
+                        Na mesma situação de hoje &mdash; poucos pedidos, cardápio que não converte, margem sumindo com desconto do iFood.
+                    </p>
+                </div>
+
+                <div class="option good">
+                    <h4>✅ Com o Método</h4>
+                    <p>
+                        Com o funil diagnosticado, cardápio corrigido e pedidos crescendo todo dia &mdash; do jeito que eu faço na minha própria operação.
+                    </p>
+                </div>
+            </div>
+
+            <p class="decision">
+                A diferença entre esses dois cenários? <strong>Uma decisão de R$37.</strong>
+            </p>
+
+            <a href="https://pay.hotmart.com/W104314494Q" target="_blank" rel="noopener noreferrer" class="cta-button primary giant pulse">
+                🛒 QUERO LOTAR MEU DELIVERY AGORA →
+            </a>
+
+            <p class="guarantee-reminder">
+                🛡️ Garantia incondicional de 30 dias. Se não gostar, devolvemos tudo.
+            </p>
+        </div>
+    </section>
+
+    <!-- ========================================
+         BLOCO 12 — EXIT POPUP
+    ======================================== -->
+    <div id="exit-popup" role="dialog" aria-modal="true" aria-labelledby="exit-popup-title">
+        <div class="exit-popup-box">
+            <h2 id="exit-popup-title">Vai sair sem o método que custa menos que uma pizza?</h2>
+            <p>São R$37. Menos do que seus clientes pagam numa pizza grande. E você, dono de pizzaria, não quer investir isso no seu próprio delivery?</p>
+            <p class="urgency-note">⚠️ Esse preço é promocional e vai aumentar.</p>
+            <a href="https://pay.hotmart.com/W104314494Q" target="_blank" rel="noopener noreferrer" class="cta-button primary" style="display:block; width:100%; box-sizing:border-box; margin:0;">
+                OK, QUERO GARANTIR POR R$37 →
+            </a>
+            <button class="dismiss-link" id="exit-popup-dismiss">Não, prefiro continuar perdendo pedido.</button>
+        </div>
+    </div>
+
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Método Pizza Pro. Todos os direitos reservados.</p>
+            <p class="legal">
+                <a href="#">Termos de Uso</a> | 
+                <a href="#">Política de Privacidade</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- ========================================
+         SCRIPTS
+    ======================================== -->
+    <script defer>
+        // =========================================================
+        // COUNTDOWN HONESTO (24h a partir da primeira visita)
+        // - Persiste no navegador (não reinicia ao atualizar)
+        // - Se quiser trocar para data fixa, defina uma ISO em OFFER_END_FIXED
+        // =========================================================
+        (function () {
+            const countdownElement = document.getElementById('countdown');
+            if (!countdownElement) return;
+
+            const STORAGE_KEY = 'pizzaProOfferEndsAt';
+            const OFFER_DURATION_MS = 24 * 60 * 60 * 1000;
+
+            // Se quiser uma data fixa (ex.: "2026-03-01T03:00:00Z"), coloque aqui.
+            const OFFER_END_FIXED = ""; // deixe vazio para usar 24h após 1ª visita
+
+            function getEndTime() {
+                if (OFFER_END_FIXED) {
+                    const fixed = Date.parse(OFFER_END_FIXED);
+                    return Number.isFinite(fixed) ? fixed : null;
+                }
+                const saved = localStorage.getItem(STORAGE_KEY);
+                const savedNum = saved ? Number(saved) : NaN;
+                if (Number.isFinite(savedNum) && savedNum > Date.now()) return savedNum;
+
+                const end = Date.now() + OFFER_DURATION_MS;
+                localStorage.setItem(STORAGE_KEY, String(end));
+                return end;
+            }
+
+            const endTime = getEndTime();
+
+            function format(ms) {
+                const totalSec = Math.max(0, Math.floor(ms / 1000));
+                const h = Math.floor(totalSec / 3600);
+                const m = Math.floor((totalSec % 3600) / 60);
+                const s = totalSec % 60;
+                return String(h).padStart(2, '0') + ":" + String(m).padStart(2, '0') + ":" + String(s).padStart(2, '0');
+            }
+
+            function tick() {
+                const remaining = endTime - Date.now();
+                countdownElement.textContent = format(remaining);
+                if (remaining <= 0) {
+                    countdownElement.textContent = "00:00:00";
+                    clearInterval(timer);
+                }
+            }
+
+            tick();
+            const timer = setInterval(tick, 1000);
+        })();
+
+        // Smooth scroll para âncoras (leve e seguro)
+        document.addEventListener('click', function (e) {
+            const a = e.target.closest('a[href^="#"]');
+            if (!a) return;
+            const href = a.getAttribute('href');
+            const target = document.querySelector(href);
+            if (!target) return;
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, { passive: false });
+
+        // EXIT POPUP
+        (function () {
+            const popup = document.getElementById('exit-popup');
+            const dismiss = document.getElementById('exit-popup-dismiss');
+            if (!popup || !dismiss) return;
+
+            let shown = false;
+
+            function showPopup() {
+                if (shown || sessionStorage.getItem('pizzaProExitShown')) return;
+                shown = true;
+                sessionStorage.setItem('pizzaProExitShown', '1');
+                popup.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function hidePopup() {
+                popup.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            document.addEventListener('mouseleave', function (e) {
+                if (e.clientY < 5) showPopup();
+            });
+
+            dismiss.addEventListener('click', hidePopup);
+
+            popup.addEventListener('click', function (e) {
+                if (e.target === popup) hidePopup();
+            });
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') hidePopup();
+            });
+        })();
+    </script>
+
+    </main>
+
+    <script>
+      (function() {
+        function safeFbq() {
+          return typeof window.fbq === 'function';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+          var ctas = Array.prototype.slice.call(document.querySelectorAll('a.cta-button'));
+          ctas.forEach(function(el) {
+            el.addEventListener('click', function() {
+              var href = (el.getAttribute('href') || '').toLowerCase();
+              if (!safeFbq()) return;
+
+              // If it's the actual checkout link, track InitiateCheckout
+              if (href.indexOf('kiwify.com.br') !== -1 || href.indexOf('pay.') !== -1) {
+                window.fbq('track', 'InitiateCheckout', {
+                  content_name: 'Método Pizza Pro',
+                  value: 37.00,
+                  currency: 'BRL'
+                });
+              } else {
+                // Otherwise treat as a lead-intent CTA (scroll to checkout / interest)
+                window.fbq('track', 'Lead', {
+                  content_name: 'Método Pizza Pro CTA'
+                });
+              }
+            }, { passive: true });
+          });
+        });
+      })();
+    </script>
+
+</body>
+</html>
